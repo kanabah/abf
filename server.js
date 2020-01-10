@@ -3,6 +3,27 @@ const express = require('express');
 const path = require('path');
 
 const app = express();
+var router = express.Router();
+
+
+const MongoClient = require('mongodb').MongoClient;
+const uri = process.env.MONGODB_URI 
+const client = new MongoClient(uri, { useNewUrlParser: true });
+
+router.get('/', function(err, res){
+
+    client.connect(err => {
+        const collection = client.db("heroku_j7g82tzg").collection("users");
+        // perform actions on the collection object
+        var myObj = {
+            name: 'bah',
+            email: 'kanabah55@gmail.com'
+        };
+        
+        collection.insertMany(myObj);
+      
+})
+
 
 // Serve only the static files form the dist directory
 app.use(express.static(__dirname + '/dist/testAtlass'));
