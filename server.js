@@ -23,6 +23,7 @@ router.get('/', function(err, res){
         collection.insertMany(myObj);
       
 })
+});
 
 
 // Serve only the static files form the dist directory
