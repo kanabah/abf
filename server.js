@@ -27,11 +27,11 @@ router.get('/', function(err, res){
 
 
 // Serve only the static files form the dist directory
-app.use(express.static(__dirname + '/dist/testAtlass'));
+app.use(express.static(__dirname + '/dist/deploy-origin'));
 
 app.get('/*', function(req,res) {
     
-res.sendFile(path.join(__dirname+'/dist/testAtlass/index.html'));
+res.sendFile(path.join(__dirname+'/dist/deploy-origin/index.html'));
 });
 
 // Start the app by listening on the default Heroku port
