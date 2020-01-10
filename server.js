@@ -10,7 +10,7 @@ const MongoClient = require('mongodb').MongoClient;
 const uri = process.env.MONGODB_URI 
 const client = new MongoClient(uri, { useNewUrlParser: true });
 
-router.get('/', function(err, res){
+router.get('/createDB', function(err, res){
 
     client.connect(err => {
         const collection = client.db("heroku_j7g82tzg").collection("users");
