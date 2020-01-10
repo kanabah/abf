@@ -15,14 +15,26 @@ router.get('/createDB', function(err, res){
     client.connect(err => {
         const collection = client.db("heroku_j7g82tzg").collection("users");
         // perform actions on the collection object
-        var myObj = {
-            name: 'bah',
-            email: 'kanabah55@gmail.com'
-        };
+        var myObj = [
+            {
+                name: 'bah',
+                email: 'kanabah55@gmail.com'
+            },
+            {
+                name: 'bah',
+                email: 'kanabah55@gmail.com'
+            },
+        ];
         
-        collection.insertMany(myObj);
+        collection.insertMany(myObj, function(err, res){
+            if(err){
+                return res.status(404).send(new Error('404 not found'));
+            }else{
+                return res.status(200);
+            }
+        });
       
-})
+    })
 });
 
 
